@@ -74,7 +74,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: tfplan
-          path: tfplan.out
 
       # Terraform Apply
       - name: Terraform Apply
