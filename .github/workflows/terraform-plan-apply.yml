@@ -48,3 +48,33 @@ jobs:
       with:
         name: tfplan
         path: tfplan.out
+
+  terraform-apply:
+    name: Terraform Apply
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout code
+        uses: actions/checkout@v2
+  
+      # Install the latest version of the Terraform CLI
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 0.14.0
+  
+      # Initialize a new or existing Terraform working directory
+      - name: Initialize Terraform
+        run: terraform init
+
+      # Download saved plan from artifacts
+      - name: Download saved plan
+        uses: actions/download-artifact@v2
+        with:
+          name: tfplan
+          path: tfplan.out
+
+      # Terraform Apply
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
