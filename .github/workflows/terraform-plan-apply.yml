@@ -40,9 +40,6 @@ jobs:
       run: terraform plan -out=tfplan.out
 
     # Save plan to artifacts
-    - name: Generate an execution plan for Terraform
-      run: terraform plan -out=tfplan.out
-
     - name: Archive Terraform Plan
       uses: actions/upload-artifact@v2
       with:
