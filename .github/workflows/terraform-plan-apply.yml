@@ -47,7 +47,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: tfplan
-        path: tfplan
+        path: tfplan.out
 
   terraform-apply:
     name: Terraform Apply
@@ -77,4 +77,4 @@ jobs:
 
       # Terraform Apply
       - name: Terraform Apply
-        run: terraform apply -auto-approve tfplan
+        run: terraform apply -auto-approve tfplan.out
